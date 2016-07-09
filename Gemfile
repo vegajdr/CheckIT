@@ -18,6 +18,7 @@ gem 'quiet_assets'
 gem 'pg'
 gem 'rails-erd'
 gem 'figaro'
+gem 'coveralls', require: false
 
 
 group :development, :test do

@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.create!(first_name: "Jorge", last_name: "Ramirez", password: "hunter2", email: "example@gmail.com")
+user1 = User.create!(first_name: "David", last_name: "Vega", password: "hunter2", email: "sample@hotmail.com")
+admin = User.create!(first_name: "Admin", last_name: "Account", password: "hunter2", email: "admin@admin.com", admin?: true)
+
+
+subcheckit = Subcheckit.create!(name: "Main", category: "General")
+subcheckit2 = Subcheckit.create!(name: "Articles", category: "Random")
+no_moderators = Subcheckit.create!(name: "No Moderator", category: "Test")
