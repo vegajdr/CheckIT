@@ -11,4 +11,6 @@
 
  has_many :moderators
  has_many :subcheckits, through: :moderators
+
+ has_many :owned_subcheckits, class_name: "Subcheckit", foreign_key: "created_by"
 end
