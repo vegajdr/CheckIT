@@ -25,5 +25,18 @@ RSpec.describe SubcheckitsController, type: :controller do
 
     expect(response.status).to eq 302
     expect(user.owned_subcheckits.count).to eq old_count + 1
+    expect(user.owned_subcheckits.last.name).to eq "Test"
+    expect(user.owned_subcheckits.last.category).to eq "Interesting"
+  end
+
+  it "automatically adds owner as moderator of subcheckit" do
+    user = create :user
+    sign_in user
+
+    response = post :create, subcheckit: { name: "Moderated", category: "New" }
+
+    subcheckit = Subcheckit.last
+    expect(response.status).to eq 302
+    expect(subcheckit.moderators.last.user).to eq user
   end
 end
