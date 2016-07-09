@@ -16,6 +16,7 @@ class SubcheckitsController < ApplicationController
 
   def create
     @subcheckit= Subcheckit.new approved_params
+    @subcheckit.created_by = current_user.id
     if @subcheckit.save
       flash[:notice] = "SubCheckit has been created"
       redirect_to subcheckits_path
