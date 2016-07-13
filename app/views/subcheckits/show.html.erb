@@ -1,0 +1,60 @@
+<% if @moderator %>
+  <h4> You are a moderator of this SubCheckit </h4>
+<% end %>
+
+<table class="table table-hover table-striped table-condensed">
+  <h2> <%= @subcheckit.name %> </h2>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>User</th>
+      <th>Upvote</th>
+      <th>Downvote</th>
+      <th>Score</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages = @messages.sort_by { |message| message.vote_total }%>
+    <% @messages.reverse! %>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= link_to message.title, subcheckit_message_path(@subcheckit.id, message.id) %></td>
+        <td><%= message.text %></td>
+        <td><%= message.user.first_name %></td>
+
+
+        <td>
+          <a href ="#" class="glyphicon glyphicon-arrow-up ajax-upvote <%= message.upvote_color(current_user) %>" data-subcheckit-id=<%= @subcheckit.id %> data-message-id=<%= message.id %>>
+        </td>
+
+        <td>
+          <a href ="#" class="glyphicon glyphicon-arrow-down ajax-downvote <%= message.downvote_color(current_user) %>" data-subcheckit-id=<%= @subcheckit.id %> data-message-id=<%= message.id %>>
+        </td>
+
+
+
+        <!-- UPVOTE -->
+
+        <td> <%= message.vote_total %>
+        <!-- Downvote -->
+
+
+        <td> <% if policy(message).edit? %>
+              <%= link_to "Edit", edit_subcheckit_message_path(@subcheckit.id, message.id), class: "btn btn-primary" %>
+            <% end %>
+        </td>
+        <td> <% if policy(message).destroy? %>
+              <%= link_to "Delete", subcheckit_message_path(@subcheckit.id, message.id), method: :delete, class: "btn btn-danger" %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "New Post", new_subcheckit_message_path(@subcheckit.id), class: "btn btn-primary" %>
+</div>

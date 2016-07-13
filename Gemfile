@@ -19,6 +19,7 @@ gem 'pg'
 gem 'rails-erd'
 gem 'figaro'
 gem 'coveralls', require: false
+gem 'bullet'
 
 
 group :development, :test do

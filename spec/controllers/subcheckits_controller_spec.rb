@@ -39,4 +39,29 @@ RSpec.describe SubcheckitsController, type: :controller do
     expect(response.status).to eq 302
     expect(subcheckit.moderators.last.user).to eq user
   end
+
+  it "allows users to edit owned subcheckit" do
+    user = create :user
+    sign_in user
+    subcheckit = user.subcheckits.create( name: "Test", category: "Category")
+
+    response = post :update, id: subcheckit.id, subcheckit: { name: "Updated", category: "Updated" }
+
+    expect(user.subcheckits.last.name).to eq "Updated"
+    expect(user.subcheckits.last.category).to eq "Updated"
+  end
+
+  it "allows users to delete owned subcheckit" do
+    user = create :user
+    sign_in user
+    subcheckit = user.subcheckits.create( name: "Delete", category: "This")
+
+    old_count = user.subcheckits.count
+
+    response = delete :destroy, id: subcheckit.id
+
+    expect(user.subcheckits.count).to eq old_count - 1
+  end
+
+  pending "pundit tests"
 end
