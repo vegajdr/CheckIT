@@ -1,6 +1,6 @@
 class Subcheckit < ActiveRecord::Base
-  has_many :messages
-  has_many :users, through: :messages
+  has_many :posts
+  has_many :users, through: :posts
 
   has_many :moderators
   has_many :users, through: :moderators

@@ -6,8 +6,8 @@
 
  has_many :votes
 
- has_many :messages
- has_many :subcheckits, through: :messages
+ has_many :posts
+ has_many :subcheckits, through: :posts
 
  has_many :moderators
  has_many :subcheckits, through: :moderators

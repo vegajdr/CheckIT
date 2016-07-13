@@ -14,3 +14,8 @@ admin = User.create!(first_name: "Admin", last_name: "Account", password: "hunte
 subcheckit = Subcheckit.create!(name: "Main", category: "General")
 subcheckit2 = Subcheckit.create!(name: "Articles", category: "Random")
 no_moderators = Subcheckit.create!(name: "No Moderator", category: "Test")
+
+
+5.times do
+  user.posts.create!(content: Faker::ChuckNorris.fact, title: Faker::Hipster.word, subcheckit_id: subcheckit.id)
+end

@@ -7,7 +7,7 @@ class SubcheckitsController < ApplicationController
 
   def show
     @subcheckit = Subcheckit.find params[:id]
-    @messages = @subcheckit.messages
+    @posts = @subcheckit.posts.includes(:user)
   end
 
   def new

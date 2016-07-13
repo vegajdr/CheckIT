@@ -1,9 +1,9 @@
 class Vote < ActiveRecord::Base
 
-  validates_uniqueness_of :user_id, scope: :message_id, message: "Only one vote per message"
+  validates_uniqueness_of :user_id, scope: :post_id, post: "Only one vote per post"
 
   belongs_to :user
-  belongs_to :message
+  belongs_to :post
   belongs_to :comment
 
 end

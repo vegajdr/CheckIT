@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Text</th>
+      <th>content</th>
       <th>User</th>
       <th>Upvote</th>
       <th>Downvote</th>
@@ -17,37 +17,37 @@
     </tr>
   </thead>
   <tbody>
-    <% @messages = @messages.sort_by { |message| message.vote_total }%>
-    <% @messages.reverse! %>
-    <% @messages.each do |message| %>
+    <% @posts = @posts.sort_by { |post| post.vote_total }%>
+    <% @posts.reverse! %>
+    <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to message.title, subcheckit_message_path(@subcheckit.id, message.id) %></td>
-        <td><%= message.text %></td>
-        <td><%= message.user.first_name %></td>
+        <td><%= link_to post.title, subcheckit_post_path(@subcheckit.id, post.id) %></td>
+        <td><%= post.content %></td>
+        <td><%= post.user.first_name %></td>
 
 
         <td>
-          <a href ="#" class="glyphicon glyphicon-arrow-up ajax-upvote <%= message.upvote_color(current_user) %>" data-subcheckit-id=<%= @subcheckit.id %> data-message-id=<%= message.id %>>
+          <a href ="#" class="glyphicon glyphicon-arrow-up ajax-upvote <%= post.upvote_color(current_user) %>" data-subcheckit-id=<%= @subcheckit.id %> data-post-id=<%= post.id %>>
         </td>
 
         <td>
-          <a href ="#" class="glyphicon glyphicon-arrow-down ajax-downvote <%= message.downvote_color(current_user) %>" data-subcheckit-id=<%= @subcheckit.id %> data-message-id=<%= message.id %>>
+          <a href ="#" class="glyphicon glyphicon-arrow-down ajax-downvote <%= post.downvote_color(current_user) %>" data-subcheckit-id=<%= @subcheckit.id %> data-post-id=<%= post.id %>>
         </td>
 
 
 
         <!-- UPVOTE -->
 
-        <td> <%= message.vote_total %>
+        <td> <%= post.vote_total %>
         <!-- Downvote -->
 
 
-        <td> <% if policy(message).edit? %>
-              <%= link_to "Edit", edit_subcheckit_message_path(@subcheckit.id, message.id), class: "btn btn-primary" %>
+        <td> <% if policy(post).edit? %>
+              <%= link_to "Edit", edit_subcheckit_post_path(@subcheckit.id, post.id), class: "btn btn-primary" %>
             <% end %>
         </td>
-        <td> <% if policy(message).destroy? %>
-              <%= link_to "Delete", subcheckit_message_path(@subcheckit.id, message.id), method: :delete, class: "btn btn-danger" %>
+        <td> <% if policy(post).destroy? %>
+              <%= link_to "Delete", subcheckit_post_path(@subcheckit.id, post.id), method: :delete, class: "btn btn-danger" %>
             <% end %>
         </td>
       </tr>
@@ -56,5 +56,5 @@
 </table>
 
 <div>
-  <%= link_to "New Post", new_subcheckit_message_path(@subcheckit.id), class: "btn btn-primary" %>
+  <%= link_to "New Post", new_subcheckit_post_path(@subcheckit.id), class: "btn btn-primary" %>
 </div>

@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   root 'subcheckits#index'
 
   resources :users do
-    resources :messages
+    resources :posts
   end
 
   resources :subcheckits do
-    resources :messages do
+    resources :posts do
       resources :comments
       post :vote
       get  :score
