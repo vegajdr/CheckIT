@@ -15,7 +15,20 @@ subcheckit = Subcheckit.create!(name: "Main", category: "General")
 subcheckit2 = Subcheckit.create!(name: "Articles", category: "Random")
 no_moderators = Subcheckit.create!(name: "No Moderator", category: "Test")
 
-
+# First Room
 5.times do
   user.posts.create!(content: Faker::ChuckNorris.fact, title: Faker::Hipster.word, subcheckit_id: subcheckit.id)
+end
+
+5.times do
+  user1.posts.create!(content: Faker::Hipster.sentence, title: Faker::Hipster.word, subcheckit_id: subcheckit.id)
+end
+
+# Second Room
+5.times do
+  user.posts.create!(content: Faker::ChuckNorris.fact, title: Faker::Hipster.word, subcheckit_id: subcheckit2.id)
+end
+
+5.times do
+  user1.posts.create!(content: Faker::Hipster.sentence, title: Faker::Hipster.word, subcheckit_id: subcheckit2.id)
 end
