@@ -21,5 +21,21 @@ class PostsController < ApplicationController
     redirect_to subcheckits_path
   end
 
+  def edit
+    Post.find params[:id]
+  end
+
+  def update
+    binding.pry
+    post = Post.find params[:id]
+
+  end
+
+  private
+
+    def approved_params
+      params.require(:post).permit(:title, :content)
+    end
+
 
 end
