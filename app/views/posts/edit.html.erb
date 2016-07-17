@@ -1,0 +1,5 @@
+<%= bootstrap_form_for @post, url: subcheckit_post_path do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :content %>
+  <button class="btn btn-primary">Save</button>
+<% end %>

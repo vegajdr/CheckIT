@@ -42,7 +42,7 @@ Rails.application.configure do
 
   config.after_initialize do
       Bullet.enable = true
-      Bullet.alert = true
+      # Bullet.alert = true
       # Bullet.bullet_logger = true
       Bullet.console = true
       # Bullet.growl = true
@@ -60,5 +60,5 @@ Rails.application.configure do
       # Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware' ]
       # Bullet.slack = { webhook_url: 'http://some.slack.url', channel: '#default', username: 'notifier' }
     end
-    
+
   end

@@ -16,7 +16,7 @@ RSpec.describe PostsController, type: :controller do
     expect(subcheckit.posts.last.title).to eq "This is my first post"
   end
 
-  skip "allows users to edit posts" do
+  it "allows users to edit posts" do
     user = create :user
     subcheckit = create :subcheckit
     sign_in user
