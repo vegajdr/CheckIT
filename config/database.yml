@@ -82,4 +82,5 @@ production:
   <<: *default
   database: checkit_production
   username: checkit
-  password: <%= ENV['CHECKIT_DATABASE_PASSWORD'] %>
+  password: 
+  # password: <%= ENV['CHECKIT_DATABASE_PASSWORD'] %>

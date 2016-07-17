@@ -21,7 +21,7 @@ class SubcheckitsController < ApplicationController
     if @subcheckit.save
       @subcheckit.moderators.create! user_id: current_user.id
       flash[:notice] = "SubCheckit has been created, you are now a moderator for this channel"
-      redirect_to subcheckits_path
+      redirect_to subcheckit_path @subcheckit
     else
       render :index
     end
